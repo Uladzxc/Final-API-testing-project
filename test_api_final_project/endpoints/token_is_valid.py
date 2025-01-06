@@ -12,6 +12,6 @@ class CheckIfTokenIsValid(Endpoint):
             f'{self.url}/authorize/{user_token}',
             headers=headers
         )
-        print(f'Token is still valid {user_token}')
+        print(f'\nToken is still valid {user_token}')
         return self.response
 
