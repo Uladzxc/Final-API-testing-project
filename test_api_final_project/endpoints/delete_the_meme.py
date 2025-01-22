@@ -17,5 +17,4 @@ class DeleteMeme(Endpoint):
             json=body,
             headers=headers
         )
-        print(f'Selected meme is deleted')
         return self.response
