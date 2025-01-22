@@ -3,7 +3,6 @@ import allure
 
 from endpoints.endpoint import Endpoint
 
-
 class GenerateUserToken(Endpoint):
 
     @allure.step('Generate new token')
