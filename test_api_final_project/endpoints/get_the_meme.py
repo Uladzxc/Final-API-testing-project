@@ -17,5 +17,4 @@ class GetMeme(Endpoint):
             json=body,
             headers=headers
         )
-        print(f'Returned meme ID is {meme_id}')
         return self.response
