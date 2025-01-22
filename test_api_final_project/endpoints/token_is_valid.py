@@ -3,7 +3,6 @@ import allure
 
 from endpoints.endpoint import Endpoint
 
-
 class CheckIfTokenIsValid(Endpoint):
     @allure.step('Check if user token is still valid')
     def check_if_token_is_valid(self, user_token=None, headers=None):

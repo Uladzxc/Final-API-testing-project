@@ -8,8 +8,6 @@ from endpoints.get_the_meme import GetMeme
 from endpoints.get_all_memes import GetAllMemes
 from endpoints.put_the_meme import PutTheMeme
 
-
-
 @pytest.fixture()
 def generate_new_user_token():
     return GenerateUserToken()
