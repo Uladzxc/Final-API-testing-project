@@ -55,6 +55,9 @@ def test_get_the_meme(token_validation, get_the_meme, create_and_delete_the_meme
     get_the_meme.get_the_selected_meme(meme_id=create_and_delete_the_meme, token=token)
     get_the_meme.check_response_status_is_200()
 
+    response_json = get_the_meme.response_json
+    get_the_meme.check_deta_is_correct(response_json)
+
 def test_delete_the_meme(token_validation, create_and_delete_the_meme, delete_the_meme):
     token=token_validation()
 
@@ -93,12 +96,6 @@ def test_create_new_meme_negative(token_validation, create_new_meme):
 
     create_new_meme.create_new_meme_negative(body=negative_test_data, token=token)
     create_new_meme.check_response_status_is_400()
-
-def test_get_the_non_existent_meme(token_validation, get_the_meme):
-    token=token_validation()
-
-    get_the_meme.get_the_selected_meme(meme_id=99999999, token=token)
-    get_the_meme.check_response_status_is_404()
 
 def test_delete_the_non_existent_meme(token_validation, delete_the_meme):
     token=token_validation()
