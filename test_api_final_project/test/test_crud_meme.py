@@ -1,7 +1,7 @@
 positive_test_data = {
         "text": "new_meme_28_12",
         "url": "https://i.imgflip.com/8zktbc.jpg",
-        "tags": [ "fun", "olympic"],
+        "tags": ["fun", "olympic"],
         "info": {
             "colors": [
                 "blue",
@@ -46,17 +46,12 @@ def test_create_new_meme_positive(token_validation, create_new_meme, delete_the_
     delete_the_meme.delete_the_selected_meme(meme_id=create_new_meme.new_meme_id, token=token)
     delete_the_meme.check_response_status_is_200()
 
-def test_get_the_meme(token_validation, create_new_meme, get_the_meme, delete_the_meme):
+def test_get_the_meme(token_validation, get_the_meme, create_and_delete_the_meme):
     token=token_validation()
 
-    create_new_meme.create_new_meme_positive(body=positive_test_data, token=token)
-    create_new_meme.check_response_status_is_200()
-
-    get_the_meme.get_the_selected_meme(meme_id=create_new_meme.new_meme_id, token=token)
+    get_the_meme.get_the_selected_meme(meme_id=create_and_delete_the_meme, token=token)
     get_the_meme.check_response_status_is_200()
 
-    delete_the_meme.delete_the_selected_meme(meme_id=create_new_meme.new_meme_id, token=token)
-    delete_the_meme.check_response_status_is_200()
 
 def test_delete_the_meme(token_validation, create_new_meme, delete_the_meme):
     token=token_validation()
