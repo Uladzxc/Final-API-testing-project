@@ -20,10 +20,16 @@ class Endpoint:
         assert self.response.status_code == 400
 
     @allure.step('Check if data is correct')
-    def check_deta_is_correct(self, response_json):
+    def check_data_is_correct(self, response_json):
         assert 'id' in response_json, "Field 'id' not found in the response"
         assert 'info' in response_json, "Field 'info' not found in the response"
         assert 'tags' in response_json, "Field 'tags' not found in the response"
         assert 'text' in response_json, "Field 'text' not found in the response"
         assert 'updated_by' in response_json, "Field 'updated_by' not found in the response"
         assert 'url' in response_json, "Field 'url' not found in the response"
+
+    @allure.step('Check if validation message returns')
+    def check_if_validation_appears(self, response, message_text):
+        assert message_text in response.text
+
+

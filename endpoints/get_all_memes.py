@@ -16,4 +16,5 @@ class GetAllMemes(Endpoint):
             json=body,
             headers=headers
         )
+        self.response_json = self.response.json()
         return self.response
