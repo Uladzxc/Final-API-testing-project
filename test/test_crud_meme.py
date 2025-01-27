@@ -67,6 +67,7 @@ def test_create_new_meme_positive(token_validation, create_new_meme, delete_the_
 
     response_json = create_new_meme.response_json
     create_new_meme.check_data_is_correct(response_json)
+    create_new_meme.check_data_matches_the_test_data(positive_test_data, response_json)
 
     delete_the_meme.delete_the_selected_meme(meme_id=create_new_meme.new_meme_id, token=token)
     delete_the_meme.check_response_status_is_200()
@@ -117,6 +118,7 @@ def test_update_the_meme(token_validation, create_and_delete_the_meme, put_the_m
 
     response_json = put_the_meme.response_json
     put_the_meme.check_data_is_correct(response_json)
+    put_the_meme.check_data_matches_the_test_data(updated_data, response_json)
 
     assert updated_data['text'] in response_json['text']
 
