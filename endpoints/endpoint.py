@@ -28,6 +28,13 @@ class Endpoint:
         assert 'updated_by' in response_json, "Field 'updated_by' not found in the response"
         assert 'url' in response_json, "Field 'url' not found in the response"
 
+    @allure.step('Check if the response data is equal to request data')
+    def check_data_matches_the_test_data(self, test_data, response_json):
+        assert test_data['info'] == response_json['info'], "Field 'info' not found in the response"
+        assert test_data['tags'] == response_json['tags'], "Field 'tags' not found in the response"
+        assert test_data['text'] == response_json['text'], "Field 'text' not found in the response"
+        assert test_data['url'] == response_json['url'], "Field 'url' not found in the response"
+
     @allure.step('Check if validation message returns')
     def check_if_validation_appears(self, response, message_text):
         assert message_text in response.text
