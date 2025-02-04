@@ -45,7 +45,7 @@ def put_the_meme():
 
 
 @pytest.fixture(scope="session")
-def token_validation():
+def token_user_authorization():
     token_data = {"token": None}
 
     def get_token():
@@ -60,7 +60,9 @@ def token_validation():
         token_data["token"] = new_token
         return new_token
 
-    return get_token
+    token = get_token()
+
+    return token
 
 
 @pytest.fixture()

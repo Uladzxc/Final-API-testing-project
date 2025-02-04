@@ -39,4 +39,10 @@ class Endpoint:
     def check_if_validation_appears(self, response, message_text):
         assert message_text in response.text
 
+    @allure.step('Check if response has selected data')
+    def check_if_response_has_selected_data(self, field_name, response_json, error_message):
+        assert field_name in response_json, error_message
 
+    @allure.step('Check if response has selected meme')
+    def check_if_response_has_selected_meme(self, response_id, meme_id):
+        assert meme_id == response_id, "Field 'id' not found in the response"

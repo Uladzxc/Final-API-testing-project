@@ -4,6 +4,7 @@ import allure
 
 from endpoints.endpoint import Endpoint
 
+
 class GetMeme(Endpoint):
     @allure.step('Get the meme')
     def get_the_selected_meme(self, body=None, headers=None, token=None, meme_id=None):
@@ -17,5 +18,12 @@ class GetMeme(Endpoint):
             json=body,
             headers=headers
         )
-        self.response_json = self.response.json()
+        # Проверяем, что ответ не пустой и это JSON
+        if self.response.text.strip():
+            try:
+                self.response_json = self.response.json()
+            except requests.JSONDecodeError:
+                self.response_json = None
+        else:
+            self.response_json = None
         return self.response
