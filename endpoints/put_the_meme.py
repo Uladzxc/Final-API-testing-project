@@ -4,10 +4,11 @@ import allure
 
 from endpoints.endpoint import Endpoint
 
+
 class PutTheMeme(Endpoint):
     @allure.step('Update the selected meme using valid body')
     def update_the_selected_meme_positive(self, body, headers=None, token=None, meme_id=None):
-        headers = headers if headers else self.headers
+        headers = headers or self.headers
 
         if token:
             headers['Authorization'] = f'{token}'
