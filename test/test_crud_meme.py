@@ -84,9 +84,7 @@ def test_get_the_meme(token_user_authorization, get_the_meme, create_and_delete_
     get_the_meme.get_the_selected_meme(meme_id=create_and_delete_the_meme, token=token_user_authorization)
     get_the_meme.check_response_status_is_200()
 
-    get_the_meme.check_if_response_has_selected_meme(
-        meme_id=create_and_delete_the_meme,
-        response_id=get_the_meme.response_json['id'])
+    get_the_meme.check_if_response_has_selected_meme(meme_id=create_and_delete_the_meme)
 
 
 def test_delete_the_meme(token_user_authorization, create_and_delete_the_meme, delete_the_meme, get_the_meme):
