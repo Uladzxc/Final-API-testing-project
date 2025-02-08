@@ -44,5 +44,7 @@ class Endpoint:
         assert field_name in response_json, error_message
 
     @allure.step('Check if response has selected meme')
-    def check_if_response_has_selected_meme(self, response_id, meme_id):
-        assert meme_id == response_id, "Field 'id' not found in the response"
+    def check_if_response_has_selected_meme(self, meme_id):
+        assert 'id' in self.response_json, "Field 'id' not found in the response"
+        response_id = self.response_json['id']
+        assert meme_id == response_id, f"Expected meme_id={meme_id}, but got response_id={response_id}"
